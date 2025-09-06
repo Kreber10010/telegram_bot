@@ -2,6 +2,9 @@ import telegram
 from telegram import bot
 import requests
 import time
+import imghdr
+
+
 
 BOT_TOKEN = "8431098641:AAFHkabBirjMG6MINm9xz5M5WxLuETrb3iM"
 CHAT_ID = "-4984490758"
