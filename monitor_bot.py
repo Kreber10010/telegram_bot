@@ -3,10 +3,12 @@ from telegram import bot
 import requests
 import time
 import imghdr
+import os
+from dotenv import load_dotenv
 
+load_dotenv()
 
-
-BOT_TOKEN = "8431098641:AAFHkabBirjMG6MINm9xz5M5WxLuETrb3iM"
+BOT_TOKEN = os.getenv("TELEGRAM_TOKEN")
 CHAT_ID = "-4984490758"
 SERVER_URL = "https://teste.com"
 
@@ -48,7 +50,7 @@ def main():
     print(f"Status inicial do servidor: {'Online' if is_online else 'Offline'}")
 
     while True:
-        time.sleep(60)
+        time.sleep(5)
         current_status = check_server_status()
 
         if not current_status and is_online:
@@ -58,7 +60,6 @@ def main():
             print(message)
             is_online = False
         elif current_status and not is_online:
-            # O servidor estava offline e agora voltou.
             message = f"✅ O servidor em {SERVER_URL} voltou a ficar ONLINE!"
             bot.send_message(chat_id=CHAT_ID, text=message)
             print(message)
